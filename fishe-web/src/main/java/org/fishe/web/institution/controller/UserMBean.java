@@ -48,12 +48,17 @@ public class UserMBean {
             this.user = userBean.find(id);
         }
         else {
-            this.user = new User();
+            this.user = userBean.create();
         }
     }
 
     public String save() {
         userBean.save(this.user);
+        return "users";
+    }
+
+    public String remove() {
+        userBean.remove(this.user.getId());
         return "users";
     }
 }

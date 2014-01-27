@@ -31,6 +31,10 @@
                             <h:button outcome="user_form" value="#{bundle.edit}" class="btn btn-default pull-right">
                                 <f:param name="id" value="#{userMBean.user.id}"/>
                             </h:button>
+
+                            <h:commandButton value="#{bundle.remove}" action="#{userMBean.remove}" styleClass="btn btn-default pull-right" style="margin-left: 5px;">
+                                <f:param name="id" value="#{userMBean.user.id}"/>
+                            </h:commandButton>
                         </div>
                     </div>
                 </h:form>
