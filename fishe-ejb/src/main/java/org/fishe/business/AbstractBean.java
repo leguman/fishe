@@ -28,11 +28,14 @@ public abstract class AbstractBean<T extends Identified> {
         return entity;
     }
 
-    public void remove(Integer id) {
-        getEntityManager().remove(getEntityManager().find(this.entityClass, id));
+    public void remove(Number id) {
+        T entity = find(id);
+        if(entity != null) {
+            getEntityManager().remove(entity);
+        }
     }
 
-    public T find(Integer id) {
+    public T find(Number id) {
         return getEntityManager().find(entityClass, id);
     }
 }
