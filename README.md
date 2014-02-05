@@ -39,7 +39,7 @@ It will create a client authenticated session to access MySQL. "-u" means that y
 
 The database and a new user will be created, then we give all privileges for this user to operate the new database.
 
-#### Installing and Starting WildFly
+#### Installing WildFly
 
 Now, we are going to install the WildFly Application Server. You basically need to download WildFly from http://www.fishe.org/downloads/wildfly8-fishe-bundle-dev.zip and unzip it locally. That's it! This custom bundle already comes configured for development if you carefully followed all the instructions in this file.
 
