@@ -23,25 +23,60 @@ If you also want to contribute to FISHE, you can download the source code using 
 
 ### How to Contribute to the Project
 
-Fishe is built with Maven 3 or superior, making the project IDE independent, so you can chose Eclipse, Intellij, Netbeans or any other Java IDE to write your contribution. Since we work with Netbeans, we are going to explain how to contribute using it as an example. You can improve this text adding Eclipse and IntelliJ configuration if you want.
+#### Creating the database on MariaDB
+
+Fishe uses MariaDB for development and production. MariaDB is a fork of MySQL, so they basically function the same way, but MariaDB is evolving faster lately. We consider that you already downloaded MariaDB from https://mariadb.org and installed it on your system. We could not go into details because it depends on your environment. So, we start from the command line. Please, type the command below to start:
+
+    #> mysql -u root -p
+
+It will create a client authenticated session to access MySQL. "-u" means that you are passing the user of the session in the command line and "-p" means that you want to type the password right after the command has been executed. The user "root" has enough rights to create the database, but we will not use it all the time. Once authenticated, type the command below to create Fishe's database and a dedicated user for it:
+
+    mysql> create database fishe;
+    mysql> create user 'fishe_user'@'localhost' identified by ’fishe_user’;
+    mysql> use fishe;
+    mysql> grant all privileges on fishe.* to 'fishe_user'@'localhost';
+    mysql> flush privileges;
+
+The database and a new user will be created, then we give all privileges for this user to operate the new database.
+
+#### Installing and Starting WildFly
+
+Now, we are going to install the WildFly Application Server. You basically need to download WildFly from http://www.fishe.org/downloads/wildfly8-fishe-bundle-dev.zip and unzip it locally. That's it! This custom bundle already comes configured for development if you carefully followed all the instructions in this file.
+
+We will refer to the absolute path of WildFly's directory (wildfly8-fishe-bundle-dev) as WILDFLY_HOME from now on.
+
+#### Installing and Configuring Netbeans
+
+Fishe is built with Maven 3 or superior, making the project IDE independent, so you can chose Eclipse, Intellij, Netbeans or any other Java IDE that supports Java EE 7 to write your contribution. Since we work with Netbeans, we are going to explain how to contribute using it as an example. You can improve this text adding Eclipse and IntelliJ configuration if you want.
 
 To start, perform the following steps:
 
-1. Download Netbeans 8 or superior from https://netbeans.org/downloads/ (For the moment only Netbeans 8 Beta is available)
+1. Download Netbeans 8 or superior from https://netbeans.org/downloads/ (For the moment only Netbeans 8 Beta is available). Netbeans 8 is the first version of Netbeans that can be integrated with WildFly.
 2. Install Netbeans in your machine and run it
 3. Select `Tools / Plugins` in the menu
 4. Go to the tab `Available Plugins` and search for `WildFly Application Server`
 5. Select the WildFly plugin and click on `Install`
 6. Restart Netbeans
 
-Now Netbeans is ready to use. So, we are going to configure the WildFly Application Server into Netbeans to allow its management through the IDE:
+To integrate with WildFly:
 
-1. Download WildFly from http://www.fishe.org/downloads/wildfly8-fishe-bundle-dev.zip and unzip it locally. We will refer to this location as WILDFLY_HOME from now on.
-2. Select the tab `Services` in the workspace.
-3. Click with the right button on `Servers` and select `Add Server...`.
-4. Select the server `WildFly Application Server`, give the name `WildFly 8` and click `Next`.
-5. Inform the complete path to the WildFly folder WILDFLY_HOME.
-6. The server configuration will be filled automatically, but if it doesn't, then you can inform the file `WILDFLY_HOME/standalone/configuration/standalone.xml` manually. Click `Next`.
-7. Make sure that the fields `Domain`, `Host` and `Port` contain the values `standalone`, `localhost` and `8080` respectively. Click `Finish`.
+1. Select the tab `Services` in the workspace.
+2. Click with the right button on `Servers` and select `Add Server...`.
+3. Select the server `WildFly Application Server`, give the name `WildFly 8 Fishe` and click `Next`.
+4. Inform the complete path to the folder WILDFLY_HOME.
+5. The server configuration will be filled automatically, but if it doesn't, then you can inform the file `WILDFLY_HOME/standalone/configuration/standalone.xml` manually. Click `Next`.
+6. Make sure that the fields `Domain`, `Host` and `Port` contain the values `standalone`, `localhost` and `8080` respectively. Click `Finish`.
 
-After these steps, `WildFly 8` is listed in the tab `Services` section `Servers`. To test if it is properly working, click on it with the right button and select `Start`. After a few seconds open a web browser and visit the address http://localhost:8080. WildFly's welcome page appears if everything is ok.
+After these steps, `WildFly 8 Fishe` is listed in the tab `Services` section `Servers`. To test if it is properly working, click on it with the right button and select `Start`. After a few seconds, open a web browser and visit the address http://localhost:8080. WildFly's welcome page appears if everything is ok.
+
+Finally, let's download the source code from GitHub:
+
+1. In the menu, select `Team / Git / Clone...`.
+2. In the dialog, inform the repository URL `https://github.com/fishe/fishe.git`, your GitHub username and password, and the local directory where you want to clone the project. Click `Next`.
+3. Select the remote branch `master` and click `Next`.
+4. Make sure the field `Parent Directory` contains the path you have chosen to clone the project, `Clone Name` contains `fishe`, `Checkout Branch` is `master` and `Remote Name` is `origin`.
+5. Then click `Finish`.
+6. Netbeans will suggest to open the project you just cloned. Click on `Open Projects...`.
+7. Select all projects in the list and click `Open` to finish.
+
+Now you are ready to contribute to Fishe! Many thanks!
