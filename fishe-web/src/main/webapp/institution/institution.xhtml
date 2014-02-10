@@ -5,7 +5,7 @@
     <body>
         <ui:composition template="../layout.xhtml">
             <ui:define name="breadcrumbs">
-                <li><a href="#">#{bundle.institution}</a></li>
+                <li><a href="#">#{bundle.institution}</a></li>                
             </ui:define>
 
             <ui:define name="content">
@@ -15,6 +15,9 @@
 
                 <div class="list-group">
                     <a href="users.xhtml" class="list-group-item">#{bundle.users}</a>
+                </div>
+                <div class="list-group">
+                    <a href="rooms.xhtml" class="list-group-item">#{bundle.rooms}</a>
                 </div>
             </ui:define>
         </ui:composition>

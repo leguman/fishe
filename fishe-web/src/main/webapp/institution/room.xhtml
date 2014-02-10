@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+        <ui:composition template="../layout.xhtml">
+            <ui:define name="breadcrumbs">
+                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
+                <li><a href="rooms.xhtml">#{bundle.rooms}</a></li>
+                <li><a href="#">#{bundle.room}</a></li>
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="page-header">
+                    <h1>#{bundle.room}: #{roomMBean.room.description}</h1>
+                </div>
+                <h:form>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <dl class="dl-horizontal">
+                                <dt>#{bundle.description}</dt>
+                                <dd>#{roomMBean.room.description}</dd>
+                            </dl>
+                            
+
+                            <h:button outcome="room_form" value="#{bundle.edit}" class="btn btn-default pull-right">
+                                <f:param name="id" value="#{roomMBean.room.id}"/>
+                            </h:button>
+
+                            <h:commandButton value="#{bundle.remove}" action="#{roomMBean.remove}" styleClass="btn btn-default pull-right" style="margin-left: 5px;">
+                                <f:param name="id" value="#{roomMBean.room.id}"/>
+                            </h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

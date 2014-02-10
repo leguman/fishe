@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <body>
+        <ui:composition template="../layout.xhtml">
+            <ui:define name="breadcrumbs">
+                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
+                <li><a href="rooms.xhtml">#{bundle.rooms}</a></li>
+                <li><a href="#">#{bundle.room}</a></li>
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="page-header">
+                    <h1>#{bundle.room}</h1>
+                </div>
+                <h:form id="form">
+                    <div class="form-group">
+                        <label for="firstName">#{bundle.description}</label>
+                        <h:inputText id="description" class="form-control" value="#{roomMBean.room.description}"/>
+                    </div>
+                    
+                    <h:inputHidden value="#{roomMBean.room.id}"/>
+
+                    <h:commandButton class="btn btn-default" value="#{bundle.save}" action="#{roomMBean.save}"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
