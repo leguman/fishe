@@ -9,7 +9,19 @@ create table user (
     email       varchar(100) not null
 ) engine = innodb;
 
---changeset leguman:2
+
+--changeset sarace:2
+
+create table academic_year (
+    id                              integer     not null primary key auto_increment,
+    academic_year                   integer     not null unique,
+    registration_start_date         date,
+    registration_end_date           date
+) engine = innodb;
+
+
+--changeset leguman:3
+
 create table course (
     id          integer     not null primary key auto_increment,
     name        varchar(50) not null,
