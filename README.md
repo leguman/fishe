@@ -21,7 +21,7 @@ If you also want to contribute to FISHE, you can download the source code using 
 
 #### Running FISHE
 
-### How to Contribute to the Project
+### Getting Started as a GNOME Contributor
 
 #### Creating the database on MariaDB
 
@@ -69,7 +69,9 @@ To integrate with WildFly:
 
 After these steps, `WildFly 8 Fishe` is listed in the tab `Services` section `Servers`. To test if it is properly working, click on it with the right button and select `Start`. After a few seconds, open a web browser and visit the address http://localhost:8080. WildFly's welcome page appears if everything is ok.
 
-Finally, let's download the source code from GitHub:
+#### Putting Your Hands on the Code
+
+Let's download the source code from GitHub:
 
 1. In the menu, select `Team / Git / Clone...`.
 2. In the dialog, inform the repository URL `https://github.com/fishe/fishe.git`, your GitHub username and password, and the local directory where you want to clone the project. Click `Next`.
