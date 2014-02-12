@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="../layout.xhtml">
+        <ui:define name="breadcrumbs">
+            <li><a href="institution.xhtml">#{bundle.institution}</a></li>
+            <li><a href="partners.xhtml">#{bundle.partners}</a></li>
+            <li><a href="#">#{bundle.partner}</a></li>
+        </ui:define>
+
+        <ui:define name="content">
+            <div class="page-header">
+                <h1>#{bundle.partner}: #{partnerMBean.partner.name}</h1>
+            </div>
+            <h:form>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>#{bundle.name}</dt>
+                            <dd>#{partnerMBean.partner.name}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>#{bundle.description}</dt>
+                            <dd>#{partnerMBean.partner.description}</dd>
+                        </dl>
+
+                        <h:button outcome="partner_form" value="#{bundle.edit}" class="btn btn-default pull-right">
+                            <f:param name="id" value="#{partnerMBean.partner.id}"/>
+                        </h:button>
+
+                        <h:commandButton value="#{bundle.remove}" action="#{userMBean.remove}" styleClass="btn btn-default pull-right" style="margin-left: 5px;">
+                            <f:param name="id" value="#{partnerMBean.partner.id}"/>
+                        </h:commandButton>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
