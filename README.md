@@ -21,7 +21,7 @@ If you also want to contribute to FISHE, you can download the source code using 
 
 #### Running FISHE
 
-### Getting Started as a GNOME Contributor
+### Getting Started as a FISHE Contributor
 
 #### Creating the database on MariaDB
 
