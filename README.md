@@ -32,7 +32,7 @@ Fishe uses MariaDB for development and production. MariaDB is a fork of MySQL, s
 It will create a client authenticated session to access MySQL. "-u" means that you are passing the user of the session in the command line and "-p" means that you want to type the password right after the command has been executed. The user "root" has enough rights to create the database, but we will not use it all the time. Once authenticated, type the command below to create Fishe's database and a dedicated user for it:
 
     mysql> create database fishe;
-    mysql> create user 'fishe_user'@'localhost' identified by ’fishe_user’;
+    mysql> create user 'fishe_user'@'localhost' identified by 'fishe_user';
     mysql> use fishe;
     mysql> grant all privileges on fishe.* to 'fishe_user'@'localhost';
     mysql> flush privileges;
