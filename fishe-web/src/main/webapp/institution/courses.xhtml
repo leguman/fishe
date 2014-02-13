@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+        <ui:composition template="../layout.xhtml">
+            <ui:define name="breadcrumbs">
+                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
+                <li><a href="#">#{bundle.courses}</a></li>
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="page-header">
+                    <h1>#{bundle.courses}</h1>
+                </div>
+
+                <h:form>
+                    <h:button outcome="course_form" value="#{bundle.new}" class="btn btn-default pull-right"/>
+
+                    <h:dataTable var="course" value="#{courseMBean.courses}" class="table table-hover">
+                        <h:column>
+                            <f:facet name="header">#{bundle.name}</f:facet>
+                            <h:link outcome="course" value="#{course.name}">
+                                <f:param name="id" value="#{course.id}"/>
+                            </h:link>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">#{bundle.description}</f:facet>
+                            <h:outputText value="#{course.description}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
