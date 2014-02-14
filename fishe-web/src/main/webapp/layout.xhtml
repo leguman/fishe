@@ -29,6 +29,72 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">#{bundle.institution} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#{request.contextPath}/institution/users.xhtml">#{bundle.users}</a></li>
+                                <li><a href="#{request.contextPath}/institution/courses.xhtml">#{bundle.courses}</a></li>
+                                <li><a href="#{request.contextPath}/institution/academicYears.xhtml">#{bundle.academicYears}</a></li>
+                                <li><a href="#{request.contextPath}/institution/partners.xhtml">#{bundle.partners}</a></li>
+                                <li><a href="#{request.contextPath}/institution/people.xhtml">#{bundle.people}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="#{request.contextPath}/index.xhtml"><span class="glyphicon glyphicon-home"/></a></li>
+                    <ui:insert name="breadcrumbs">Breadcrumbs</ui:insert>
+                </ol>
+            </div>
+
+            <div id="content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+
+        <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+            <h5><a href="http://hildeberto.com" target="_blank">FISHE</a></h5>
+        </div>
+        <script src="#{request.contextPath}/resources/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script src="#{request.contextPath}/resources/js/bootstrap.js" type="text/javascript"></script>
+        <script src="#{request.contextPath}/resources/js/main.js" type="text/javascript"></script>
+    </h:body>
+</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="#{request.contextPath}/resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="#{request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="#{request.contextPath}/resources/css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen" />
+        <title>FISHE</title>
+    </h:head>
+
+    <h:body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#{request.contextPath}/index.xhtml">FISHE</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">#{bundle.institution} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#{request.contextPath}/institution/users.xhtml">#{bundle.users}</a></li>
+                                <li><a href="#{request.contextPath}/institution/courses.xhtml">#{bundle.courses}</a></li>
+                                <li><a href="#{request.contextPath}/institution/academicYears.xhtml">#{bundle.academicYears}</a></li>
+                                <li><a href="#{request.contextPath}/institution/partners.xhtml">#{bundle.partners}</a></li>
                             </ul>
                         </li>
                     </ul>

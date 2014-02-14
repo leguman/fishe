@@ -10,7 +10,6 @@ import org.fishe.domain.Identified;
 /**
  *
  * @author Hildeberto Mendonca
- * @param <T>
  */
 public abstract class AbstractBean<T extends Identified> {
 
