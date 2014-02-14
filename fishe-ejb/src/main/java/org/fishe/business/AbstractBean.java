@@ -1,8 +1,10 @@
 package org.fishe.business;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
 import org.fishe.domain.Identified;
 
 /**
@@ -36,10 +38,9 @@ public abstract class AbstractBean<T extends Identified> {
     }
 
     public T save(T entity) {
-        if(entity.getId() == null) {
+        if (entity.getId() == null) {
             getEntityManager().persist(entity);
-        }
-        else {
+        } else {
             entity = getEntityManager().merge(entity);
         }
         return entity;
@@ -47,12 +48,23 @@ public abstract class AbstractBean<T extends Identified> {
 
     public void remove(Number id) {
         T entity = find(id);
-        if(entity != null) {
+        if (entity != null) {
             getEntityManager().remove(entity);
         }
     }
 
     public T find(Number id) {
         return getEntityManager().find(entityClass, id);
+    }
+
+    /**
+     * Returns all persisted instances of the given entity. Use it with extreme
+     * precaution.
+     */
+    public List<T> findAll() {
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder()
+                .createQuery();
+        cq.select(cq.from(entityClass));
+        return getEntityManager().createQuery(cq).getResultList();
     }
 }
