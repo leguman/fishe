@@ -1,3 +1,6 @@
 /fishe-ejb/target/
 /fishe-web/target/
 /fishe-ear/target/
+/fishe-web/nb-configuration.xml
+/fishe-ejb/nb-configuration.xml
+/fishe-ear/nb-configuration.xml

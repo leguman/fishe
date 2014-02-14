@@ -21,7 +21,7 @@ If you also want to contribute to FISHE, you can download the source code using 
 
 #### Running FISHE
 
-### How to Contribute to the Project
+### Getting Started as a FISHE Contributor
 
 #### Creating the database on MariaDB
 
@@ -32,7 +32,7 @@ Fishe uses MariaDB for development and production. MariaDB is a fork of MySQL, s
 It will create a client authenticated session to access MySQL. "-u" means that you are passing the user of the session in the command line and "-p" means that you want to type the password right after the command has been executed. The user "root" has enough rights to create the database, but we will not use it all the time. Once authenticated, type the command below to create Fishe's database and a dedicated user for it:
 
     mysql> create database fishe;
-    mysql> create user 'fishe_user'@'localhost' identified by ’fishe_user’;
+    mysql> create user 'fishe_user'@'localhost' identified by 'fishe_user';
     mysql> use fishe;
     mysql> grant all privileges on fishe.* to 'fishe_user'@'localhost';
     mysql> flush privileges;
@@ -69,7 +69,9 @@ To integrate with WildFly:
 
 After these steps, `WildFly 8 Fishe` is listed in the tab `Services` section `Servers`. To test if it is properly working, click on it with the right button and select `Start`. After a few seconds, open a web browser and visit the address http://localhost:8080. WildFly's welcome page appears if everything is ok.
 
-Finally, let's download the source code from GitHub:
+#### Putting Your Hands on the Code
+
+Let's download the source code from GitHub:
 
 1. In the menu, select `Team / Git / Clone...`.
 2. In the dialog, inform the repository URL `https://github.com/fishe/fishe.git`, your GitHub username and password, and the local directory where you want to clone the project. Click `Next`.
@@ -79,4 +81,36 @@ Finally, let's download the source code from GitHub:
 6. Netbeans will suggest to open the project you just cloned. Click on `Open Projects...`.
 7. Select all projects in the list and click `Open` to finish.
 
-Now you are ready to contribute to Fishe! Many thanks!
+Now you are ready to contribute to Fishe!
+
+When you finish your contribution, it's time to share it with the rest of the community. There are two ways of doing that. If you are already a committer then you already have permission to commit directly, if not then you have to do a pull request.
+
+if you are a committer you have to perform the following steps to send your contribution to the main repository:
+
+1. commit your changes locally.
+2. update your local copy with the updates available on the server.
+3. in case of conflicts, solve all of them and commit the changes.
+4. push all local commits to the server.
+
+To commit your changes locally:
+
+1. Select the project `fishe` and go to the menu `Team / Commit`
+2. In the new dialog, write a commit message containing at least the number of the issue you are working on (i.e.: Issue #5: implementation finished, but tests are still incomplete).
+3. In the same dialog, select the files you want to include in the commit. Make sure to not include IDE specific files such as `nb-configuration.xml`.
+4. Click on `Commit` when you're done.
+
+When using Git, your commits are not imediatly sent to the server. They stay locally until you push them to the server. Meanwhile other people are already pushing their changes to the server, so before pushing your changes you have to make sure that there is no conflicts between your local changes and the server ones. To check this, you have to update your local copy as follows:
+
+1. Select the project `fishe` and go to the menu `Team / Remote / Pull...`.
+2. In the dialog, leave the option `Select Configured Git Repository Location` selected and click `Next`.
+3. Select the remote branch `master -> origin/master` and click `Finish`.
+
+At this point you will know whether there are or not conflicts to solve. If there are conflits, try to solve them or contact the project leader to know how to proceed. After solving the conflicts, a new commit is needed to include the manual merge. For that, you may repeat the commit instructions above.
+
+Finally, it's your turn to push your changes to the server. Proceed as follows:
+
+1. Select the project `fishe` and go to the menu `Team / Remote / Push`.
+2. In the dialog, leave the option `Select Configured Git Repository Location` selected and click `Next`.
+3. Select the local branch `master -> master` and click `Finish`.
+
+Your code is finally sent to the server and it is now available for other developers.
