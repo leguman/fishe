@@ -52,3 +52,12 @@ create table room (
     id          integer      not null primary key auto_increment,
     description  varchar(250)  not null
 ) engine= innodb;
+
+--changeset bruyere:7
+
+create table domain (
+    id          integer     not null primary key auto_increment,
+    name        varchar(50) not null,
+    description varchar(100) not null
+) engine = innodb;
+
