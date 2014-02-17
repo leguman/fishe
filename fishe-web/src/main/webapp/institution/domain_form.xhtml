@@ -18,18 +18,18 @@
                     <h1>#{bundle.domain}</h1>
                 </div>
                 <h:form id="form">
-                    
+
                     <div class="form-group">
                         <label for="name">#{bundle.name}</label>
                         <h:inputText id="name" class="form-control" value="#{domainMBean.domain.name}"/>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="description">#{bundle.description}</label>
                         <h:inputText id="description" class="form-control" value="#{domainMBean.domain.description}"/>
                     </div>
-                    
-                    <h:inputHidden value="#domainMBean.domain.id}"/>
+
+                    <h:inputHidden value="#{domainMBean.domain.id}"/>
 
                     <h:commandButton class="btn btn-default" value="#{bundle.save}" action="#{domainMBean.save}"/>
                 </h:form>
