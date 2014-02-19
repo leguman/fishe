@@ -5,9 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <body>
-        <ui:composition template="../layout.xhtml">
+        <ui:composition template="layout.xhtml">
             <ui:define name="breadcrumbs">
-                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
                 <li><a href="buildings.xhtml">#{bundle.buildings}</a></li>
                 <li><a href="#">#{bundle.building}</a></li>
             </ui:define>
@@ -28,13 +27,15 @@
                                 <dd>#{buildingMBean.building.description}</dd>
                             </dl>
 
-                            <h:button outcome="building_form" value="#{bundle.edit}" class="btn btn-default pull-right">
+                            <h:button outcome="building_form" value="#{bundle.edit}" styleClass="btn btn-default">
                                 <f:param name="id" value="#{buildingMBean.building.id}"/>
                             </h:button>
-
-                            <h:commandButton value="#{bundle.remove}" action="#{buildingMBean.remove}" styleClass="btn btn-default pull-right" style="margin-left: 5px;">
+                            &nbsp;
+                            <h:commandButton value="#{bundle.remove}" action="#{buildingMBean.remove}" styleClass="btn btn-default">
                                 <f:param name="id" value="#{buildingMBean.building.id}"/>
                             </h:commandButton>
+                            &nbsp;
+                            <h:button outcome="buildings" value="#{bundle.back}" styleClass="btn btn-default"/>
                         </div>
                     </div>
                 </h:form>

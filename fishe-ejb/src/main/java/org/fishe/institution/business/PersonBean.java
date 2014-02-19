@@ -16,7 +16,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.fishe.business.AbstractBean;
 import org.fishe.institution.domain.Person;
-import org.fishe.institution.domain.User;
 
 /**
  *

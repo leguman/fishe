@@ -5,10 +5,9 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
     <body>
-        <ui:composition template="../layout.xhtml">
+        <ui:composition template="layout.xhtml">
 
             <ui:define name="breadcrumbs">
-                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
                 <li><a href="partners.xhtml">#{bundle.partners}</a></li>
                 <li><a href="#">#{bundle.partner}</a></li>
             </ui:define>
@@ -17,22 +16,27 @@
                 <div class="page-header">
                     <h1>#{bundle.partner}</h1>
                 </div>
-                <h:form id="form">
-                    
-                    <div class="form-group">
-                        <label for="name">#{bundle.name}</label>
-                        <h:inputText id="name" class="form-control" value="#{partnerMBean.partner.name}"/>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="description">#{bundle.description}</label>
-                        <h:inputText id="description" class="form-control" value="#{partnerMBean.partner.description}"/>
-                    </div>
-                    
-                    <h:inputHidden value="#{partnerMBean.partner.id}"/>
 
-                    <h:commandButton class="btn btn-default" value="#{bundle.save}" action="#{partnerMBean.save}"/>
-                </h:form>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h:form id="form">
+                            <div class="form-group">
+                                <label for="name">#{bundle.name}</label>
+                                <h:inputText id="name" class="form-control" value="#{partnerMBean.partner.name}"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">#{bundle.description}</label>
+                                <h:inputText id="description" class="form-control" value="#{partnerMBean.partner.description}"/>
+                            </div>
+
+                            <h:inputHidden value="#{partnerMBean.partner.id}"/>
+
+                            <h:commandButton class="btn btn-primary" value="#{bundle.save}" action="#{partnerMBean.save}"/>&nbsp;
+                            <h:button outcome="partners" value="#{bundle.cancel}" styleClass="btn btn-default"/>
+                        </h:form>
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </body>

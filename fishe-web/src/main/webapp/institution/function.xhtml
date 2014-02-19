@@ -5,9 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 
-    <ui:composition template="../layout.xhtml">
+    <ui:composition template="layout.xhtml">
         <ui:define name="breadcrumbs">
-            <li><a href="institution.xhtml">#{bundle.institution}</a></li>
             <li><a href="functions.xhtml">#{bundle.functions}</a></li>
             <li><a href="#">#{bundle.function}</a></li>
         </ui:define>
@@ -28,13 +27,15 @@
                             <dd>#{functionMBean.function.description}</dd>
                         </dl>
 
-                        <h:button outcome="function_form" value="#{bundle.edit}" class="btn btn-default pull-right">
+                        <h:button outcome="function_form" value="#{bundle.edit}" styleClass="btn btn-default">
                             <f:param name="id" value="#{functionMBean.function.id}"/>
                         </h:button>
-
-                        <h:commandButton value="#{bundle.remove}" action="#{functionMBean.remove}" styleClass="btn btn-default pull-right" style="margin-left: 5px;">
+                        &nbsp;
+                        <h:commandButton value="#{bundle.remove}" action="#{functionMBean.remove}" styleClass="btn btn-default">
                             <f:param name="id" value="#{functionMBean.function.id}"/>
                         </h:commandButton>
+                        &nbsp;
+                        <h:button outcome="functions" value="#{bundle.back}" styleClass="btn btn-default"/>
                     </div>
                 </div>
             </h:form>

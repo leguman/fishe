@@ -6,10 +6,9 @@
       xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
-        <ui:composition template="../layout.xhtml">
+        <ui:composition template="layout.xhtml">
 
             <ui:define name="breadcrumbs">
-                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
                 <li><a href="#">#{bundle.partners}</a></li>
             </ui:define>
 
@@ -18,25 +17,28 @@
                     <h1>#{bundle.partners}</h1>
                 </div>
 
-                <h:form>
-                    <h:button outcome="partner_form" value="#{bundle.new}" class="btn btn-default pull-right"/>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h:form>
+                            <h:dataTable var="p" value="#{partnerMBean.partners}" class="table table-hover">
+                                <f:facet name="header">
+                                    <h:button outcome="partner_form" value="#{bundle.new}" class="btn btn-default"/>
+                                </f:facet>
+                                <h:column>
+                                    <f:facet name="header">#{bundle.name}</f:facet>
+                                    <h:link outcome="partner" value="#{p.name}">
+                                        <f:param name="id" value="#{p.id}"/>
+                                    </h:link>
+                                </h:column>
 
-                    <h:dataTable var="p" value="#{partnerMBean.partners}" class="table table-hover">
-                        
-                        <h:column>
-                            <f:facet name="header">#{bundle.name}</f:facet>
-                            <h:link outcome="partner" value="#{p.name}">
-                                <f:param name="id" value="#{p.id}"/>
-                            </h:link>
-                        </h:column>
-                        
-                        <h:column>
-                            <f:facet name="header">#{bundle.description}</f:facet>
-                            <h:outputText value="#{p.description}"/>
-                        </h:column>
-                        
-                    </h:dataTable>
-                </h:form>
+                                <h:column>
+                                    <f:facet name="header">#{bundle.description}</f:facet>
+                                    <h:outputText value="#{p.description}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </body>

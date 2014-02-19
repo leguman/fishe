@@ -547,8 +547,11 @@ h4 small,
 
 .page-header {
   padding-bottom: 9px;
-  margin: 40px 0 20px;
+  margin: 20px 0 20px;
   border-bottom: 1px solid #eeeeee;
+  color: #219fee;
+  font-weight: bold;
+  text-shadow:1px 1px #ffffff;
 }
 
 ul,
@@ -1395,7 +1398,7 @@ pre code {
 
 table {
   max-width: 100%;
-  background-color: transparent;
+  background-color: #ffffff;
 }
 
 th {
