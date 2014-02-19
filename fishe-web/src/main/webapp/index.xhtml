@@ -5,8 +5,13 @@
     <body>
         <ui:composition template="home_layout.xhtml">
             <ui:define name="content">
+                <div class="page-header">
+                    <h1>FISHE</h1>
+                </div>
+
                 <div class="list-group">
                     <a href="institution/institution.xhtml" class="list-group-item">#{bundle.institution}</a>
+                    <a href="administration/administration.xhtml" class="list-group-item">#{bundle.administration}</a>
                 </div>
             </ui:define>
         </ui:composition>
