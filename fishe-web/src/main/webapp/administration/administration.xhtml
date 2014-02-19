@@ -3,10 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <body>
-        <ui:composition template="home_layout.xhtml">
+        <ui:composition template="../layout.xhtml">
+            <ui:define name="breadcrumbs">
+                <li><a href="#">#{bundle.administration}</a></li>                
+            </ui:define>
+
             <ui:define name="content">
+                <div class="page-header">
+                    <h1>#{bundle.administration}</h1>
+                </div>
+
                 <div class="list-group">
-                    <a href="institution/institution.xhtml" class="list-group-item">#{bundle.institution}</a>
+                    <a href="users.xhtml" class="list-group-item">#{bundle.users}</a>
                 </div>
             </ui:define>
         </ui:composition>

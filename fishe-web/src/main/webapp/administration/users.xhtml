@@ -7,19 +7,20 @@
     <body>
         <ui:composition template="../layout.xhtml">
             <ui:define name="breadcrumbs">
-                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
+                <li><a href="administration.xhtml">#{bundle.administration}</a></li>
                 <li><a href="#">#{bundle.users}</a></li>
             </ui:define>
 
             <ui:define name="content">
                 <div class="page-header">
-                    <h1>#{bundle.users}</h1>
+                    <h1 style="color: white; font-weight: bolder;">#{bundle.users}</h1>
                 </div>
 
                 <h:form>
-                    <h:button outcome="user_form" value="#{bundle.new}" class="btn btn-default pull-right"/>
-
-                    <h:dataTable var="user" value="#{userMBean.users}" class="table table-hover">
+                    <h:dataTable var="user" value="#{userMBean.users}" class="table table-hover" style="background-color: rgba(255, 255, 255, 0.9);">
+                        <f:facet name="header">
+                            <h:button outcome="user_form" value="#{bundle.new}" class="btn btn-default pull-right"/>
+                        </f:facet>
                         <h:column>
                             <f:facet name="header">#{bundle.firstName}</f:facet>
                             <h:link outcome="user" value="#{user.firstName}">
