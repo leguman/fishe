@@ -96,6 +96,7 @@ alter table room add name varchar(30) not null;
 alter table room change description description text null;
 alter table room add building integer null;
 create index idx_building_room on room (building);
+
 alter table room add constraint fk_building_room foreign key (building) references building (id) on delete set null;
 
 --changeset hanghoang:11
