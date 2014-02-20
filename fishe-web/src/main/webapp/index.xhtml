@@ -1,13 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <body>
         <ui:composition template="home_layout.xhtml">
             <ui:define name="content">
-                <div class="list-group">
-                    <a href="institution/institution.xhtml" class="list-group-item">#{bundle.institution}</a>
-                    <a href="education/education.xhtml" class="list-group-item">#{bundle.education}</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="list-group">
+                            <a href="institution/institution.xhtml" class="list-group-item">#{bundle.institution}</a>
+                            <a href="education/education.xhtml" class="list-group-item">#{bundle.education}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">#{homePageMBean.webSource.title}</div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <c:forEach var="article" items="#{homePageMBean.webSource.articles}">
+                                        <a href="#" class="list-group-item">
+                                            <h4 class="list-group-item-heading">#{article.title}</h4>
+                                            <p class="list-group-item-text">#{article.summary}</p>
+                                        </a>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </ui:define>
         </ui:composition>

@@ -18,9 +18,20 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h:form>
-                            <h:dataTable var="building" value="#{buildingMBean.buildings}" class="table table-hover">
+                            <h:dataTable id="buildings" var="building" value="#{buildingMBean.buildings}" class="table table-hover">
                                 <f:facet name="header">
-                                    <h:button outcome="building_form" value="#{bundle.new}" class="btn btn-default"/>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <h:selectOneMenu id="organization" label="#{bundle.organization}" value="#{buildingMBean.selectedOrganization}" class="form-control">
+                                                <f:selectItem itemLabel="#{bundle.organizations} ..." itemValue="0"/>
+                                                <f:selectItems value="#{buildingMBean.organizations}" var="org" itemLabel="#{org.name}" itemValue="#{org.id}"/>
+                                                <f:ajax render="buildings"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <h:button outcome="building_form" value="#{bundle.new}" class="btn btn-default"/>
+                                        </div>
+                                    </div>
                                 </f:facet>
                                 <h:column>
                                     <f:facet name="header">#{bundle.name}</f:facet>
