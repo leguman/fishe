@@ -61,3 +61,12 @@ create table domain (
     description varchar(100) not null
 ) engine = innodb;
 
+--changeset hanghoang:8
+
+create table programme (
+    id                  integer      not null primary key auto_increment,
+    short_title         varchar(20)  not null,
+    full_title          varchar(50),
+    number_of_credit    integer,
+    degree              varchar(50)
+) engine = innodb;
