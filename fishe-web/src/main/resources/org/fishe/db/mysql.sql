@@ -76,3 +76,24 @@ create table building (
     name        varchar(50) not null,
     description varchar(100) not null
 ) engine = innodb;
+
+--changeset htmfilho:10
+
+create table organization (
+    id          integer      not null primary key auto_increment,
+    name        varchar(100) not null,
+    description text             null,
+    acronym     varchar(20)      null,
+    parent      integer          null
+) engine = innodb;
+
+alter table building change description description text null;
+alter table building add organization integer null;
+create index idx_organization_building on building (organization);
+alter table building add constraint fk_organization_building foreign key (organization) references organization (id) on delete set null;
+
+alter table room add name varchar(30) not null;
+alter table room change description description text null;
+alter table room add building integer null;
+create index idx_building_room on room (building);
+alter table room add constraint fk_building_room foreign key (building) references building (id) on delete set null;

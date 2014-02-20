@@ -7,30 +7,30 @@
     <body>
         <ui:composition template="layout.xhtml">
             <ui:define name="breadcrumbs">
-                <li><a href="#">#{bundle.rooms}</a></li>
+                <li><a href="#">#{bundle.organizations}</a></li>
             </ui:define>
 
             <ui:define name="content">
                 <div class="page-header">
-                    <h1>#{bundle.rooms}</h1>
+                    <h1>#{bundle.organizations}</h1>
                 </div>
 
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h:form>
-                            <h:dataTable var="room" value="#{roomMBean.rooms}" class="table table-hover">
+                            <h:dataTable var="organization" value="#{organizationMBean.organizations}" class="table table-hover">
                                 <f:facet name="header">
-                                    <h:button outcome="room_form" value="#{bundle.new}" class="btn btn-default"/>
+                                    <h:button outcome="organization_form" value="#{bundle.new}" class="btn btn-default"/>
                                 </f:facet>
                                 <h:column>
                                     <f:facet name="header">#{bundle.name}</f:facet>
-                                    <h:link outcome="room" value="#{room.name}">
-                                        <f:param name="id" value="#{room.id}"/>
+                                    <h:link outcome="organization" value="#{organization.name}">
+                                        <f:param name="id" value="#{organization.id}"/>
                                     </h:link>
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">#{bundle.description}</f:facet>
-                                    <h:outputText value="#{room.description}"/>
+                                    <h:outputText value="#{organization.description}"/>
                                 </h:column>
                             </h:dataTable>
                         </h:form>

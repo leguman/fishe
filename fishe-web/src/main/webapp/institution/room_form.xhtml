@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <body>
         <ui:composition template="layout.xhtml">
             <ui:define name="breadcrumbs">
@@ -19,8 +20,27 @@
                     <div class="panel-body">
                         <h:form id="form">
                             <div class="form-group">
-                                <label for="firstName">#{bundle.description}</label>
-                                <h:inputText id="description" class="form-control" value="#{roomMBean.room.description}"/>
+                                <label for="organization">#{bundle.organization}</label>
+                                <h:selectOneMenu id="organization" label="#{bundle.organization}" value="#{roomMBean.selectedOrganization}" class="form-control">
+                                    <f:selectItem itemLabel="Select ..." itemValue="0"/>
+                                    <f:selectItems value="#{roomMBean.organizations}" var="org" itemLabel="#{org.name}" itemValue="#{org.id}"/>
+                                    <f:ajax render="building"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="form-group">
+                                <label for="building">#{bundle.building}</label>
+                                <h:selectOneMenu id="building" label="#{bundle.building}" value="#{roomMBean.selectedBuilding}" class="form-control">
+                                    <f:selectItem itemLabel="Select ..." itemValue="0"/>
+                                    <f:selectItems value="#{roomMBean.buildings}" var="build" itemLabel="#{build.name}" itemValue="#{build.id}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">#{bundle.name}</label>
+                                <h:inputText id="name" class="form-control" value="#{roomMBean.room.name}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">#{bundle.description}</label>
+                                <h:inputTextarea id="description" class="form-control" value="#{roomMBean.room.description}"/>
                             </div>
 
                             <h:inputHidden value="#{roomMBean.room.id}"/>
