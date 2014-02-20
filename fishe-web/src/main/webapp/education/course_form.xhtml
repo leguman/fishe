@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <body>
+        <ui:composition template="layout.xhtml">
+            <ui:define name="breadcrumbs">
+                <li><a href="courses.xhtml">#{bundle.courses}</a></li>
+                <li><a href="#">#{bundle.course}</a></li>
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="page-header">
+                    <h1>#{bundle.course}</h1>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h:form id="form">
+                            <div class="form-group">
+                                <label for="name">#{bundle.name}</label>
+                                <h:inputText id="name" class="form-control" value="#{courseMBean.course.name}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">#{bundle.description}</label>
+                                <h:inputText id="description" class="form-control" value="#{courseMBean.course.description}"/>
+                            </div>
+                            <h:inputHidden value="#{courseMBean.course.id}"/>
+
+                            <h:commandButton class="btn btn-primary" value="#{bundle.save}" action="#{courseMBean.save}"/>&nbsp;
+                            <h:button outcome="courses" value="#{bundle.cancel}" styleClass="btn btn-default"/>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

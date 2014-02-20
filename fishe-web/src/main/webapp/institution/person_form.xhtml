@@ -6,9 +6,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <body>
-        <ui:composition template="../layout.xhtml">
+        <ui:composition template="layout.xhtml">
             <ui:define name="breadcrumbs">
-                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
                 <li><a href="people.xhtml">#{bundle.people}</a></li>
                 <li><a href="#">#{bundle.person}</a></li>
             </ui:define>
@@ -17,25 +16,31 @@
                 <div class="page-header">
                     <h1>#{bundle.person}</h1>
                 </div>
-                <h:form id="form">
-                    <div class="form-group">
-                        <label for="firstName">#{bundle.firstName}</label>
-                        <h:inputText id="firstName" class="form-control" value="#{personMBean.person.firstName}"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">#{bundle.lastName}</label>
-                        <h:inputText id="lastName" class="form-control" value="#{personMBean.person.lastName}"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="birthDate">#{bundle.birthDate}</label>
-                        <p:inputMask id="birthDate" class="form-control" value="#{personMBean.person.birthDate}" mask="99/99/9999">
-                            <f:convertDateTime pattern="dd/MM/yyyy" />
-                        </p:inputMask>
-                    </div>
-                    <h:inputHidden value="#{personMBean.person.id}"/>
 
-                    <h:commandButton class="btn btn-default" value="#{bundle.save}" action="#{personMBean.save}"/>
-                </h:form>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h:form id="form">
+                            <div class="form-group">
+                                <label for="firstName">#{bundle.firstName}</label>
+                                <h:inputText id="firstName" class="form-control" value="#{personMBean.person.firstName}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">#{bundle.lastName}</label>
+                                <h:inputText id="lastName" class="form-control" value="#{personMBean.person.lastName}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthDate">#{bundle.birthDate}</label>
+                                <p:inputMask id="birthDate" class="form-control" value="#{personMBean.person.birthDate}" mask="99/99/9999">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </p:inputMask>
+                            </div>
+                            <h:inputHidden value="#{personMBean.person.id}"/>
+
+                            <h:commandButton class="btn btn-primary" value="#{bundle.save}" action="#{personMBean.save}"/>&nbsp;
+                            <h:button outcome="people" value="#{bundle.cancel}" styleClass="btn btn-default"/>
+                        </h:form>
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </body>

@@ -5,9 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <body>
-        <ui:composition template="../layout.xhtml">
+        <ui:composition template="layout.xhtml">
             <ui:define name="breadcrumbs">
-                <li><a href="institution.xhtml">#{bundle.institution}</a></li>
                 <li><a href="rooms.xhtml">#{bundle.rooms}</a></li>
                 <li><a href="#">#{bundle.room}</a></li>
             </ui:define>
@@ -25,13 +24,15 @@
                             </dl>
                             
 
-                            <h:button outcome="room_form" value="#{bundle.edit}" class="btn btn-default pull-right">
+                            <h:button outcome="room_form" value="#{bundle.edit}" styleClass="btn btn-default">
                                 <f:param name="id" value="#{roomMBean.room.id}"/>
                             </h:button>
-
-                            <h:commandButton value="#{bundle.remove}" action="#{roomMBean.remove}" styleClass="btn btn-default pull-right" style="margin-left: 5px;">
+                            &nbsp;
+                            <h:commandButton value="#{bundle.remove}" action="#{roomMBean.remove}" styleClass="btn btn-default">
                                 <f:param name="id" value="#{roomMBean.room.id}"/>
                             </h:commandButton>
+                            &nbsp;
+                            <h:button outcome="rooms" value="#{bundle.back}" styleClass="btn btn-default"/>
                         </div>
                     </div>
                 </h:form>

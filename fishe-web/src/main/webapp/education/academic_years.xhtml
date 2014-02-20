@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+        <ui:composition template="layout.xhtml">
+            <ui:define name="breadcrumbs">
+                <li><a href="#">#{bundle.academicYears}</a></li>
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="page-header">
+                    <h1>#{bundle.academicYears}</h1>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h:form>
+                            <h:dataTable var="academicYear" value="#{academicYearMBean.academicYears}" class="table table-hover">
+                                <f:facet name="header">
+                                    <h:button outcome="academic_year_form" value="#{bundle.new}" class="btn btn-default"/>
+                                </f:facet>
+                                <h:column>
+                                    <f:facet name="header">#{bundle.academicYear}</f:facet>
+                                    <h:link outcome="academic_year" value="#{academicYear.academicYear}">
+                                        <f:param name="id" value="#{academicYear.id}"/>
+                                    </h:link>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">#{bundle.startDate}</f:facet>
+                                    <h:outputText id="registrationStartDate" value="#{academicYear.registrationStartDate}">
+                                        <f:convertDateTime type="date" for="registrationStartDate" pattern="dd/MM/yyy"/>
+                                    </h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">#{bundle.endDate}</f:facet>
+                                    <h:outputText id="registrationEndDate" value="#{academicYear.registrationEndDate}">
+                                        <f:convertDateTime type="date" for="registrationEndDate" pattern="dd/MM/yyy"/>
+                                    </h:outputText>
+                                </h:column>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

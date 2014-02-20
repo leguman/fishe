@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:composition template="layout.xhtml">
+            <ui:define name="breadcrumbs">
+                <li><a href="#">#{bundle.functions}</a></li>
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="page-header">
+                    <h1>#{bundle.functions}</h1>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h:form>
+                            <h:dataTable var="p" value="#{functionMBean.functions}" class="table table-hover">
+                                <f:facet name="header">
+                                    <h:button outcome="function_form" value="#{bundle.new}" class="btn btn-default"/>
+                                </f:facet>
+                                <h:column>
+                                    <f:facet name="header">#{bundle.name}</f:facet>
+                                    <h:link outcome="function" value="#{p.name}">
+                                        <f:param name="id" value="#{p.id}"/>
+                                    </h:link>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">#{bundle.description}</f:facet>
+                                    <h:outputText value="#{p.description}"/>
+                                </h:column>
+
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
+

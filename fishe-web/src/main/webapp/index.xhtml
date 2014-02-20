@@ -3,14 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <body>
-        <ui:composition template="layout.xhtml">
-            <ui:define name="breadcrumbs">
-
-            </ui:define>
-
+        <ui:composition template="home_layout.xhtml">
             <ui:define name="content">
                 <div class="list-group">
                     <a href="institution/institution.xhtml" class="list-group-item">#{bundle.institution}</a>
+                    <a href="education/education.xhtml" class="list-group-item">#{bundle.education}</a>
                 </div>
             </ui:define>
         </ui:composition>
