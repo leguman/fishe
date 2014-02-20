@@ -7,12 +7,8 @@
 package org.fishe.institution.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import org.fishe.domain.Identified;
 
 /**
@@ -27,9 +23,14 @@ public class Room implements Serializable, Identified<Integer> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @Column(name="description")
+
+    private String name;
+
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "building")
+    private Building building;
 
     public Integer getId() {
         return id;
@@ -46,6 +47,37 @@ public class Room implements Serializable, Identified<Integer> {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Building getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Room room = (Room) o;
+
+        if (!id.equals(room.id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

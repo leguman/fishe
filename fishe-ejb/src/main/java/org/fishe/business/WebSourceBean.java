@@ -9,40 +9,28 @@ import com.sun.syndication.io.XmlReader;
 import org.fishe.domain.Article;
 import org.fishe.domain.WebSource;
 import org.fishe.utils.URIUtils;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.inject.Named;
+import javax.ejb.Stateless;
 
 
 /**
  * @author Hildeberto Mendonca - http://www.hildeberto.com
  */
-@Named
+@Stateless
 public class WebSourceBean {
 
     private static final Logger LOGGER = Logger.getLogger(WebSourceBean.class.getName());
 
-    public List<Article> loadUnpublishedArticles(WebSource webSource) {
-        return loadArticles(webSource);
-    }
-
-    public List<Article> loadArticles(WebSource webSource) {
-        List<Article> feedArticles = new ArrayList<>();
-
+    private void loadArticles(WebSource webSource, SyndFeed feed) {
         try {
-            URL url  = new URL(webSource.getFeed());
-            XmlReader reader = new XmlReader(url);
-            SyndFeed feed = new SyndFeedInput().build(reader);
             Article article;
             for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
                 SyndEntry entry = (SyndEntry) i.next();
@@ -74,30 +62,22 @@ public class WebSourceBean {
                 }
                 article.setContent(content.toString());
 
-                feedArticles.add(article);
+                webSource.addArticle(article);
             }
-        } catch (IllegalArgumentException | FeedException | IOException iae) {
+        } catch (IllegalArgumentException iae) {
             LOGGER.log(Level.SEVERE, iae.getMessage(), iae);
         }
-
-        return feedArticles;
     }
 
-    /**
-     * @param websiteUrl a website url where we can find a feed url.
-     * @return a new webSource filled with feed url and title only. Null if a feed url is not found in the content of
-     * the informed website url.
-     * */
-    public WebSource loadWebSource(String websiteUrl) {
+    public WebSource loadWebSource(String feedUrl) {
         WebSource webSource = null;
-        String feedUrl = findWebsiteFeedURL(websiteUrl);
-        LOGGER.log(Level.INFO, "feedUrl: {0}", feedUrl);
         if(feedUrl != null) {
             try {
                 URL url  = new URL(feedUrl);
                 XmlReader reader = new XmlReader(url);
                 SyndFeed feed = new SyndFeedInput().build(reader);
                 webSource = new WebSource(feed.getTitle(), feedUrl);
+                loadArticles(webSource, feed);
             } catch (IllegalArgumentException | FeedException | IOException iae) {
                 LOGGER.log(Level.SEVERE, iae.getMessage(), iae);
             }

@@ -1,12 +1,8 @@
 package org.fishe.institution.domain;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import org.fishe.domain.Identified;
 
 /**
@@ -21,12 +17,13 @@ public class Building implements Serializable, Identified<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="name")
     private String name;
 
-    @Column(name="description")
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name="organization")
+    private Organization organization;
 
     @Override
     public Integer getId() {
@@ -54,6 +51,14 @@ public class Building implements Serializable, Identified<Integer> {
         this.description = description;
     }
 
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -63,7 +68,6 @@ public class Building implements Serializable, Identified<Integer> {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Building)) {
             return false;
         }
@@ -75,6 +79,6 @@ public class Building implements Serializable, Identified<Integer> {
 
     @Override
     public String toString() {
-        return "Building{" + "id=" + id + ", name=" + name + '}';
+        return this.name;
     }
 }
