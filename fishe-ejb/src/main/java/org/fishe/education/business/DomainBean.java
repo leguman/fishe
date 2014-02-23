@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.fishe.education.business;
 
 import java.util.List;
@@ -18,7 +12,7 @@ import org.fishe.education.domain.Domain;
  * @author bruyere
  */
 @Stateless
-public class DomainBean  extends AbstractBean<Domain> {
+public class DomainBean extends AbstractBean<Domain> {
 
     @PersistenceContext
     private EntityManager em;

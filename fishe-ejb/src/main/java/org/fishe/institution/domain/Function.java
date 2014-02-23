@@ -1,13 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- *//*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.fishe.institution.domain;
 
 import java.io.Serializable;
@@ -24,16 +14,17 @@ import org.fishe.domain.Identified;
  */
 @Entity
 @Table(name = "function")
-public class Function implements Serializable, Identified<Integer>  {
+public class Function implements Serializable, Identified<Integer> {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-   
+
     private String name;
 
     private String description;
-    
+
     @Override
     public Integer getId() {
         return id;
@@ -59,8 +50,7 @@ public class Function implements Serializable, Identified<Integer>  {
     public void setDescription(String description) {
         this.description = description;
     }
-       
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -82,5 +72,5 @@ public class Function implements Serializable, Identified<Integer>  {
     public String toString() {
         return "org.fishe.institution.domain.Funtion[ id=" + id + " ]";
     }
-    
+
 }
