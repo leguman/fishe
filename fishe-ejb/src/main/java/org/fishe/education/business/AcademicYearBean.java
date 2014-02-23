@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package org.fishe.education.business;
 
 import java.util.List;
@@ -18,7 +12,7 @@ import org.fishe.education.domain.AcademicYear;
  * @author sarace
  */
 @Stateless
-public class AcademicYearBean extends AbstractBean<AcademicYear>{
+public class AcademicYearBean extends AbstractBean<AcademicYear> {
 
     @PersistenceContext
     private EntityManager em;
@@ -31,13 +25,14 @@ public class AcademicYearBean extends AbstractBean<AcademicYear>{
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
     /**
      * Find all Academic Years
+     *
      * @return The list of all academics years in the database.
      */
-    public List<AcademicYear> findAll(){
+    public List<AcademicYear> findAll() {
         return em.createQuery("select ay from AcademicYear ay order by ay.academicYear asc", AcademicYear.class).getResultList();
     }
-    
+
 }
